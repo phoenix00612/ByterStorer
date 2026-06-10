@@ -1,0 +1,16 @@
+# Compiled binary
+kv
+dynamickv
+*.o
+
+# Data files generated at runtime
+data/
+*.kv
+*.idx
+*.bf
+
+# Editor / OS
+.vscode/
+.DS_Store
+*.swp
+*~
