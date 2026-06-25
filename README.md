@@ -32,3 +32,22 @@ make
 ## Configuration
 
 Edit `src/conf/db.conf` to set data directory, segment size, and bloom filter parameters.
+
+## REST API
+
+The engine exposes a REST API via [Crow](https://crowcpp.org) on port **8008**.
+
+| Method | Route | Description |
+|--------|-------|-------------|
+| GET | `/` | List all models |
+| POST | `/{model}` | Create model + insert data |
+| GET | `/{model}` | Get all records (supports `?search=term`) |
+| GET | `/{model}/{key}` | Get specific key |
+| DELETE | `/{model}` | Delete entire model |
+| DELETE | `/{model}/{key}` | Delete specific key |
+
+## Performance
+
+- ~500K+ ops/sec on local benchmarks
+- Sub-millisecond lookups via Bloom filter + Robin Hood index
+- CRC-32 integrity check on every read
